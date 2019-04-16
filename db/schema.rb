@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_130847) do
+ActiveRecord::Schema.define(version: 2019_04_16_134029) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_130847) do
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "team_id", null: false
     t.string "name", null: false
-    t.integer "sports_type", null: false
+    t.integer "sports_id", null: false
     t.integer "grade_id", null: false
     t.integer "calendar_id", null: false
     t.datetime "created_at", null: false
