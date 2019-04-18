@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_134029) do
+ActiveRecord::Schema.define(version: 2019_04_18_052803) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date", null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_134029) do
     t.string "name", null: false
     t.integer "sports_id", null: false
     t.integer "grade_id", null: false
-    t.integer "calendar_id", null: false
+    t.integer "calendar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -121,12 +121,15 @@ ActiveRecord::Schema.define(version: 2019_04_16_134029) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "image", null: false
+    t.string "image"
     t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
+    t.string "email", null: false
+    t.string "token"
+    t.string "password_digest", null: false
     t.index ["team_id"], name: "index_users_on_team_id"
+    t.index ["token"], name: "index_users_on_token", unique: true
   end
 
   add_foreign_key "schedules", "calendars"
