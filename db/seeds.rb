@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Sport.create(sport_type: '野球')
+# Sport.create(sport_type: 'サッカー')
+# Sport.create(sport_type: 'ラグビー')
+# Sport.create(sport_type: '水泳')
+# Sport.create(sport_type: '卓球')
+# Sport.create(sport_type: '柔道')
+# Sport.create(sport_type: '陸上')
+
+# Grade.create(grade_type: '中学')
+# Grade.create(grade_type: '高校')
+# Grade.create(grade_type: '大学')
+# Grade.create(grade_type: '社会人')

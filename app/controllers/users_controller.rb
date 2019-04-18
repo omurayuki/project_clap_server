@@ -1,13 +1,8 @@
 class UsersController < ApplicationController
-  # has_secure_password
 
   def create
     user = User.new(user_params)
-    if user.save
-      render json: user, status: :ok
-    else
-      render_json_failure("can't signup")
-    end
+      render json: user, status: :ok if user.save!
   end
 
   def login
@@ -21,8 +16,10 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
-    params.require(:user).permit(:email, :password_confirmation, :name, :teamId)
+    params.permit(:email, :password, :name, :team_id)
   end
 end
+
+#imageはfirebase storageに保存

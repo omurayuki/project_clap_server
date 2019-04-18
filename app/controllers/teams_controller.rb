@@ -1,18 +1,20 @@
 class TeamsController < ApplicationController
 
+  #一般userがteam_idで所属チームを検索するため
+  def index
+    team = Team.find_by!(team_id: team_params[:team_id])
+    render json team, status: :ok
+  end
+
   def create
     team = Team.new(team_params)
-    if team.save
-      render json: team, status: :ok
-    else
-      render_json_failure("can't save team data")
-    end
+      render json: team, status: :ok if team.save!
   end
 
   private
 
   def team_params
-    params.require(:team).permit(:team_id, :name, :sports_id, :grade_id)
+    params.permit(:team_id, :name, :sports_id, :grade_id)
   end
 end
 
