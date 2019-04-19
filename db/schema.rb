@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_165627) do
+ActiveRecord::Schema.define(version: 2019_04_19_054809) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date", null: false
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_165627) do
     t.bigint "diary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["diary_id"], name: "index_comments_on_diary_id"
   end
 
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_04_18_165627) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
+    t.datetime "deleted_at"
     t.index ["user_id"], name: "index_diaries_on_user_id"
   end
 
@@ -67,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_165627) do
     t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
     t.index ["comment_id"], name: "index_replies_on_comment_id"
   end
 

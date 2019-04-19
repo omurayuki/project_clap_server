@@ -15,3 +15,5 @@
 # Position.create(position: 'コーチ')
 # Position.create(position: 'マネージャー')
 # Position.create(position: '監督')
+
+Diary.create(text_1: "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", text_2:"iiiiiiiiiiiiiiiiiiiiiiiiiiii", text_3:"ppppppppppppppppppppppppppppp", text_4:"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu", text_5:"sssssssssssssssssssssssssssssssssssssss", text_6:"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")

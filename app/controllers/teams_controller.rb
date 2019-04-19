@@ -3,11 +3,8 @@ class TeamsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    if @team
-      render json: @team, status: :ok
-    else
-      render_json_failure("can't fetch team")
-    end
+    @team
+    render json: @team, status: :ok
   end
 #現在ログインしているuserのteamのidとupdateしようとしているteamのidが一致しているか確認
   def create
@@ -17,11 +14,8 @@ class TeamsController < ApplicationController
 
   def update
     team = Team.find(params[:id])
-    if team.update(team_params)
-      render json: team, status: :ok
-    else
-      render_json_failure("can't update")
-    end
+    team.update(team_params)
+    render json: team, status: :ok
   end
 
   private

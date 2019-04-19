@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   belongs_to :team
+  has_many :diaries
   has_many :user_positions
   has_many :positions, through: :user_positions
   has_many :user_roles

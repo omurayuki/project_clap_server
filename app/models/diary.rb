@@ -7,4 +7,6 @@ class Diary < ApplicationRecord
 	validates :text_4, presence: true, length: { minimum: 20, maximum: 400 }
 	validates :text_5, presence: true, length: { minimum: 20, maximum: 400 }
 	validates :text_6, presence: true, length: { minimum: 20, maximum: 400 }
+
+	enum status: [:timeline, :submited, :draft]
 end
