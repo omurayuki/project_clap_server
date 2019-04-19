@@ -37,7 +37,7 @@ class RepliesController < ApplicationController
   end
 
   def set_comment
-    diary = current_user.diaries.find("5")
+    diary = current_user.diaries.find(params[:diary_id])
     @comment = diary.comments.find(params[:comment_id])
   end
 end
