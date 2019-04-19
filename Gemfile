@@ -17,6 +17,7 @@ gem 'active_model_serializers'
 gem 'dotenv-rails'
 gem 'mysql2', '~> 0.5.2'
 gem 'knock'
+gem'paranoia', '~> 2.3', '>= 2.3.1'
 
 group :development, :test do
 gem 'pry-byebug'

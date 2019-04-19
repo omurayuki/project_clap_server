@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_18_052803) do
+ActiveRecord::Schema.define(version: 2019_04_18_165627) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "date", null: false
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_04_18_052803) do
     t.string "email", null: false
     t.string "token"
     t.string "password_digest", null: false
+    t.datetime "deleted_at"
     t.index ["team_id"], name: "index_users_on_team_id"
     t.index ["token"], name: "index_users_on_token", unique: true
   end

@@ -10,3 +10,8 @@
 # Grade.create(grade_type: '高校')
 # Grade.create(grade_type: '大学')
 # Grade.create(grade_type: '社会人')
+
+# Position.create(position: '選手')
+# Position.create(position: 'コーチ')
+# Position.create(position: 'マネージャー')
+# Position.create(position: '監督')

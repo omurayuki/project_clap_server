@@ -1,25 +1,57 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:index, :update, :destroy]
+
+  def index
+    @user = User.find(params[:id])
+    if @user
+      render json: @user, status: :ok
+    else
+      render_json_failure("can't fetch user")
+    end
+  end
 
   def create
     user = User.new(user_params)
-      render json: user, status: :ok if user.save!
+    if user.save
+      render json: user, status: :ok
+    else
+      render_json_failure("can't create")
+    end
   end
 
   def login
-    current_user = User.find_by(email: users_params[:email], password: users_params[:password])
-    return render json: {status: 401, message: '認証に失敗しました'} unless current_user
-    render plain: current_user.token
+    user = User.find_by(email: params[:email])
+    if user&.authenticate(params[:password])
+      render json: user, status: :ok
+    else
+      render_json_failure("can't login")
+    end
+  end
 
-  rescue StandardError => e
-    Rails.logger.error(e.message)
-    render json: Init.message(500, e.message), status: 500
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params)
+      render json: user, status: :ok
+    else
+      render_json_failure("can't update")
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      render json: { message: 'delete success' }, status: :ok
+    else
+      render_json_failure("can't delete")
+    end
   end
 
   private
 
   def user_params
-    params.permit(:email, :password, :name, :team_id)
+    params.permit(:email, :password, :name, :team_id, position_ids: [])
   end
 end
 
-#imageはfirebase storageに保存
+# imageはfirebase storageに保存
+# positionをusertableに多対多の関係で登録したいが、actionメソッドにどうやって書けばいいのか

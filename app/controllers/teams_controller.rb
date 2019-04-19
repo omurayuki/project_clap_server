@@ -1,15 +1,30 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user, only: [:index, :update]
 
-  #一般userがteam_idで所属チームを検索するため
   def index
-    team = Team.find_by!(team_id: team_params[:team_id])
-    render json team, status: :ok
+    @team = Team.find(params[:team_id])
+    if @team
+      render json: @team, status: :ok
+    else
+      render_json_failure("can't fetch team")
+    end
   end
-
+#現在ログインしているuserのteamのidとupdateしようとしているteamのidが一致しているか確認
   def create
     team = Team.new(team_params)
       render json: team, status: :ok if team.save!
   end
+
+  def update
+    team = Team.find(params[:id])
+    if team.update(team_params)
+      render json: team, status: :ok
+    else
+      render_json_failure("can't update")
+    end
+  end
+
+  
 
   private
 
