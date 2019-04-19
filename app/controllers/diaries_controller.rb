@@ -7,11 +7,14 @@ class DiariesController < ApplicationController
     render json: diary, status: :ok
   end
 
+  def find_all
+    diaries = Diary.all
+    render json: diaries, status: :ok
+  end
+
   def index
-    #statusをみてjsonで返す
-    @diaries = Diary.all
-    @diaries
-    render json: @diaries, status: :ok
+    diaries = Diary.where(status: params[:status])
+    render json: diaries, status: :ok
   end
 
   def create
@@ -19,10 +22,6 @@ class DiariesController < ApplicationController
     diary.user_id = current_user.id
     diary.save
     render json: diary, status: :ok
-  end
-
-  def find_item
-
   end
 
   def update
@@ -43,3 +42,5 @@ class DiariesController < ApplicationController
     params.permit(:text_1, :text_2, :text_3, :text_4, :text_5, :text_6, :status)
   end
 end
+
+#自分自身のstatusが全てのuserのsubmittedか
