@@ -16,4 +16,10 @@
 # Position.create(position: 'マネージャー')
 # Position.create(position: '監督')
 
-Diary.create(text_1: "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", text_2:"iiiiiiiiiiiiiiiiiiiiiiiiiiii", text_3:"ppppppppppppppppppppppppppppp", text_4:"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu", text_5:"sssssssssssssssssssssssssssssssssssssss", text_6:"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+# Diary.create(text_1: "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", text_2:"iiiiiiiiiiiiiiiiiiiiiiiiiiii", text_3:"ppppppppppppppppppppppppppppp", text_4:"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu", text_5:"sssssssssssssssssssssssssssssssssssssss", text_6:"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+
+require "date"
+
+for n in 0 .. 300 do
+    Calendar.create(date: DateTime.now + n)
+end
